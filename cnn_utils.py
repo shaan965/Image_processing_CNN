@@ -1,6 +1,3 @@
-"""
-Utility functions for cnn.py
-"""
 from math import floor
 import torch
 from torch.utils.data import DataLoader
@@ -8,20 +5,7 @@ from torchvision import datasets
 from torchvision.transforms import ToTensor
 
 def get_MNIST(name, batchsize = 64):
-    """
-    Return decentered MNIST images.
-
-    Args:
-        name: 'top_left' for images translated toward the top-left corner,
-              or 'bottom_right' for images translated toward the bottom-right.
-        batchsize: Number of examples per batch
-
-    Returns:
-        train,test: lists of batches of training and test examples
-
-    Shape:
-        (batchsize, 1, 30, 30) for each batch
-    """
+    
     trn_dat = datasets.MNIST(root="data", train=True, download=True, transform=ToTensor())
     tst_dat = datasets.MNIST(root="data", train=False, download=True, transform=ToTensor())
     trn = DataLoader(trn_dat, batch_size=batchsize) # X.shape: N, C, H, W; Y.shape: N
@@ -51,10 +35,7 @@ def get_MNIST(name, batchsize = 64):
 
 
 def show_examples(left_examples, right_examples, fname='examples.png'):
-    """
-    Create a file containing side-by-side examples of the difference
-    between top-left and bottom-right decentered digits.
-    """
+  
     try:
         import matplotlib
         matplotlib.use('Agg')
@@ -82,10 +63,6 @@ def show_examples(left_examples, right_examples, fname='examples.png'):
         print('Skipping examples.png creation; could not import pyplot')
 
 def hout(hin, kernel_size_y, stride_y):
-    """
-    Return the output height dimension of a `Conv2d` layer that has input
-    height of `hin`, a kernel with height direction size of `kernel_size_y`,
-    and height direction stride of `stride_y`.
-    """
+    
     return floor((hin - (kernel_size_y - 1) -1)/stride_y + 1)
 
