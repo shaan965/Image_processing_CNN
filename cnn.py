@@ -1,15 +1,6 @@
-"""
-Solution stub for Question 1 (Convolutional Neural Networks).
-
-Fill in the implementations of the `MLP2` and `CNN` classes.
-
-See <https://pytorch.org/tutorials/beginner/basics/intro.html> for a PyTorch
-tutorial.
-"""
 import torch
 from torch import nn
 
-# These should be the only pytorch classes you need:
 from torch.nn import (Module, Sequential, NLLLoss,
                       Flatten, Linear, ReLU, LogSoftmax, Conv2d, MaxPool2d)
 
@@ -17,11 +8,7 @@ from torch.nn import (Module, Sequential, NLLLoss,
 from cnn_utils import get_MNIST, show_examples
 
 class MLP1(Module):
-    """
-    A densely-connected feedforward network with a single hidden layer of 512
-    ReLU units.  Output layer is 10 fully-connected log softmax
-    units (i.e., the output will be a vector of log-probabilities).
-    """
+   
     def __init__(self):
         super().__init__()
         # Input will be a tensor with dimension `(n_datapoints, n_channels, height, width)`
